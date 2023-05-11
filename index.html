@@ -16,7 +16,7 @@
         
         <label>
     Марка автомобиля
-    <select name="сar__brand" required>
+    <select name="сar-brand" required>
       <option value="Audi" selected>Audi</option>
       <option value="BMW">BMW</option>
       <option value="Ford">Hyundai</option>
@@ -29,7 +29,7 @@
   
   <label>
     Модель автомобиля
-    <select name="сar__model" required>
+    <select name="сar-model" required>
       <option value="Audi-90">Audi 90</option>
       <option value="Audi-Coupе" selected>Audi Coupе</option>
       <option value="Audi-Cabriolet">Audi Cabriolet</option>
@@ -103,11 +103,11 @@
   <p>Состояние автомобиля:</p>
   <label>
     Новый
-    <input type="radio" name="v">
+    <input type="radio" name="condition">
   </label><br/>
   <label>
     Подержанный
-    <input type="radio"name="v">
+    <input type="radio"name="condition">
   </label><br/>
 </div>
 
@@ -115,15 +115,15 @@
   <p>Выберите способ оплаты:</p>
   <label>
     Картой
-    <input type="radio" name="v">
+    <input type="radio" name="payment">
   </label><br/>
   <label>
     Наличными
-    <input type="radio"name="v">
+    <input type="radio"name="payment">
   </label><br/>
   <label>
     Счёт на юридическое лицо
-    <input type="radio"name="v">
+    <input type="radio"name="payment">
   </label><br/>
 </div>
 
@@ -132,9 +132,9 @@
     <input type="email" name="email" id="email" placeholder="elon@musk.com" required>
   </label>
 
-  <button type="submit">Рассчитать стоимость</button>
+  <button class="btn" type="submit">Рассчитать стоимость</button>
 </form>
-
+<div class="сar-price"></div>
     </section>
   </div>
   <script src="index.js"></script>

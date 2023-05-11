@@ -11,3 +11,9 @@ font-size: 1.5rem;;
 display:grid;
 gap: 0.5vw;
 }
+.сar-price {
+  margin-top: 5%;
+}
+.img-avto{
+  width: 15vw;
+}
