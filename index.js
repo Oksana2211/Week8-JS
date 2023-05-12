@@ -1,18 +1,21 @@
 const сarPrice = document.querySelector('.сar-price');//основной блок для вывода рассчетов div
 const btnPrice = document.querySelector('.btn');//кнопка 
 
+
 const photo = document.createElement('div');// контейнер для фото
 
-
-const nameAvto = document.createElement('h3');// контейнер для марки авто
+const brandAvto = document.createElement('h2'); //контейнер для марки авто
+const nameAvto = document.createElement('h2');// контейнер для модели авто
 const fuelAvto = document.createElement('span'); //  топливо
 const volumeAvto = document.createElement('span'); // объём двигателя
 const conditionAvto = document.createElement('span'); // состояние автомобиля
 const paymentAvto = document.createElement('span');// способ оплаты
 const email = document.createElement('span'); // майл пользователя
 
-сarPrice.appendChild(photo); //добавляем конейнер для фото в div
-сarPrice.appendChild(nameAvto);// добавляем контейнеры в div
+
+сarPrice.appendChild(photo); // добавляем контейнеры в div
+сarPrice.appendChild(brandAvto);
+сarPrice.appendChild(nameAvto);
 сarPrice.appendChild(fuelAvto);
 сarPrice.appendChild(volumeAvto);
 сarPrice.appendChild(conditionAvto);
@@ -20,10 +23,11 @@ const email = document.createElement('span'); // майл пользовател
 сarPrice.appendChild(email);
 // console.log(fuelAvto);
 
-const nameA = document.querySelector('#car').elements['сarModel'];//находим список с марками авто
+const сarBrand = document.querySelector('#car').elements['сarBrand']; //список авто
+const сarModel = document.querySelector('#car').elements['сarModel'];//список с марками авто
 const fuels = document.querySelectorAll('input[name="fuel"]');
 
-
+// console.log(сarBrand);
 
 
 function addPrice() {
@@ -32,9 +36,8 @@ function addPrice() {
 
   photo.innerHTML += `<img class="img-avto" src="img/avto.png" alt="авто на продажу">`;//выводим фото
 
-
-  nameAvto.innerHTML += `${nameA.value}`;//выводим марку авто в div
-  // fuelAvto.innerHTML += `${fuelA.value}`;
+  brandAvto.innerHTML += `${сarBrand.value}`;// выводим марку авто в div
+  nameAvto.innerHTML += `${сarModel.value}`;//выводим модель авто в div
   for (const fuel of fuels) {
     if (fuel.checked) {
       fuelAvto.innerHTML += `${fuel.value}`;
