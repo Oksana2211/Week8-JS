@@ -17,3 +17,6 @@ gap: 0.5vw;
 .img-avto{
   width: 15vw;
 }
+.carList {
+  display: none;
+}
