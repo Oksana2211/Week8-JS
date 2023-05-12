@@ -25,7 +25,7 @@ const email = document.createElement('span'); // майл пользовател
 
 const сarBrand = document.querySelector('#car').elements['сarBrand']; //список авто
 
-const carList = document.querySelectorAll('.carList');//весь список с марками авто
+const carLists = document.querySelectorAll('.carList');//весь список с марками авто
 
 
 const сarModelAudi = document.querySelector('#car').elements.сarModelAudi;//список с марками авто Audi
@@ -42,31 +42,31 @@ const сarModelToyota = document.querySelector('#car').elements.сarModelToyota;
 сarBrand.addEventListener('change', function () {
 
   if (this.value == "Audi") {
-    [...carList].forEach(i => i.classList.add("carList"));
+    [...carLists].forEach(i => i.classList.add("carList"));
     сarModelAudi.classList.remove('carList');
   }
   if (this.value == "BMW") {
-    [...carList].forEach(i => i.classList.add("carList"));
+    [...carLists].forEach(i => i.classList.add("carList"));
     сarModelBMW.classList.remove('carList');
   }
   if (this.value == "Hyundai") {
-    [...carList].forEach(i => i.classList.add("carList"));
+    [...carLists].forEach(i => i.classList.add("carList"));
     сarModelHyunda.classList.remove('carList');
   }
   if (this.value == "Honda") {
-    [...carList].forEach(i => i.classList.add("carList"));
+    [...carLists].forEach(i => i.classList.add("carList"));
     сarModelHonda.classList.remove('carList');
   }
   if (this.value == "Jeep") {
-    [...carList].forEach(i => i.classList.add("carList"));
+    [...carLists].forEach(i => i.classList.add("carList"));
     сarModelJeep.classList.remove('carList');
   }
   if (this.value == "Mazda") {
-    [...carList].forEach(i => i.classList.add("carList"));
+    [...carLists].forEach(i => i.classList.add("carList"));
     сarModelMazda.classList.remove('carList');
   }
   if (this.value == "Toyota") {
-    [...carList].forEach(i => i.classList.add("carList"));
+    [...carLists].forEach(i => i.classList.add("carList"));
     сarModelToyota.classList.remove('carList');
   }
 
@@ -88,9 +88,22 @@ function addPrice() {
   photo.innerHTML += `<img class="img-avto" src="img/avto.png" alt="авто на продажу">`;//выводим фото
 
   brandAvto.innerHTML += `${сarBrand.value}`;// выводим марку авто в div
-  nameAvto.innerHTML += `${сarModel.value}`;//выводим модель авто в div
 
-  for (const fuel of fuels) { // выводим выбранное топливо
+
+
+  // console.log(carLists);
+
+  console.log(carLists);
+  for (const carList of carLists) {//выводим выбранную модель авто в div
+    if (carList.checked) {
+      nameAvto.innerHTML += `${carList.value}`;
+      break;
+    }
+  }
+
+
+
+  for (const fuel of fuels) { // выводим выбранное топливо в div
     if (fuel.checked) {
       fuelAvto.innerHTML += `${fuel.value}`;
       break;
