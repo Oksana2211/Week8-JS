@@ -126,18 +126,18 @@
 
 <label>
   Объём двигателя:
- <input type="text" name="volume" placeholder="от 1.1 литра до 3.5 литров" minlength="1" maxlength="3" required />
+ <input type="number" name="volume" placeholder="от 1.1 литра до 3.5 литров" min="1" max="3" required />
 </label>
 
 <div class="condition">
   <p>Состояние автомобиля:</p>
   <label>
     Новый
-    <input type="radio" name="condition" value="Новый">
+    <input onclick="conditionOwnersClose()" type="radio" name="condition" value="Новый">
   </label><br/>
   <label>
     Подержанный
-    <input onclick="divCondition()" type="radio"name="condition" value="Подержанный">
+    <input onclick="conditionOwners()" type="radio"name="condition" value="Подержанный">
   </label><br/>
 </div>
 
