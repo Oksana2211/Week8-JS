@@ -32,6 +32,7 @@ const сarBrand = document.querySelector('#car').elements['сarBrand']; //мар
 
 const carLists = document.querySelectorAll('.carList');//весь список с моделями авто
 
+
 const сarModelAudi = document.querySelector('#car').elements.сarModelAudi;//список с моделями авто Audi
 сarModelAudi.classList.remove('carList');
 const сarModelBMW = document.querySelector('#car').elements.сarModelBMW;//список с моделями авто BMW
@@ -65,6 +66,9 @@ const conditions = document.querySelectorAll('input[name="condition"]'); // ра
 const payments = document.querySelectorAll('input[name="payment"]'); // радиокнопки с выбором оплаты
 
 const mail = document.querySelector('input[name="email"]'); // поле для ввода почты
+
+
+
 
 
 сarBrand.addEventListener('change', function () {//удаляем класс carList(display: none;) с выпадающего списка моделей выбранной марки авто
@@ -129,6 +133,91 @@ function addPrice() {
     nameAvto.innerHTML += `Модель: ${сarModelMazda.value}`;
   } else { nameAvto.innerHTML += `Модель: ${сarModelToyota.value}`; }
 
+  const priceModelAudi = {
+    'Audi 90': 1200000,
+    'Audi Coupе': 1500000,
+    'Audi Cabriolet': 1700000,
+    'Audi V8': 1800000,
+    'Audi A4': 1600000,
+    'Audi Q3': 1700000
+  };
+  const priceModelBMW = {
+    'BMW 4': 1200000,
+    'BMW 5': 1400000,
+    'BMW E34': 1500000,
+    'BMW F01': 1600000,
+    'BMW F10': 1700000,
+    'BMW G11': 1800000,
+    'BMW X2': 1900000,
+    'BMW Z': 2000000,
+    'BMW Z4': 2200000
+  };
+  const priceModelHyundai = {
+    'Hyundai Accent': 1200000,
+    'Hyundai Atos': 1300000,
+    'Hyundai Casper': 1400000,
+    'Hyundai Excel': 1500000,
+    'Hyundai Getz': 1600000,
+    'Hyundai Kona': 1700000,
+    'Hyundai Solaris': 1800000,
+    'Hyundai Tucson': 1700000
+  };
+  const priceModelHonda = {
+    'Honda Accord': 1200000,
+    'Honda Crosstour': 1300000,
+    'Honda Grace': 1400000,
+    'Honda Jazz': 1500000,
+    'Honda Legend': 1600000,
+    'Honda Logo': 1500000,
+    'Honda Pilot': 1600000,
+    'Honda Stream': 1700000
+  };
+  const priceModelJeep = {
+    'Jeep Grand Commander': 1800000,
+    'Jeep Commander (XK)': 1900000,
+    'Jeep Cherokee (KL)': 2000000,
+    'Jeep Liberty': 2200000
+  };
+  const priceModelMazda = {
+    'Mazda 2': 1500000,
+    'Mazda 3': 1600000,
+    'Mazda CX 5': 1700000,
+    'Mazda CX 50': 1800000
+  };
+  const priceModelToyota = {
+    'Toyota Tercel': 1500000,
+    'Toyota SAI': 1600000,
+    'Toyota Rush': 1700000,
+    'Toyota Probox': 1800000,
+    'Toyota Camry': 2000000,
+    'Toyota Corolla': 1800000
+  };
+
+  if (brandAvto.textContent == "Audi") {//выводим сумму авто в div
+    price.innerHTML += priceModelAudi[`${сarModelAudi.value}`];
+  } else if (brandAvto.textContent == "BMW") {
+    price.innerHTML += priceModelBMW[`${сarModelBMW.value}`];
+  } else if (brandAvto.textContent == "Hyundai") {
+    price.innerHTML += priceModelHyundai[`${сarModelHyunda.value}`];
+  } else if (brandAvto.textContent == "Honda") {
+    price.innerHTML += priceModelHonda[`${сarModelHonda.value}`];
+  } else if (brandAvto.textContent == "Jeep") {
+    price.innerHTML += priceModelJeep[`${сarModelJeep.value}`];
+  } else if (brandAvto.textContent == "Mazda") {
+    price.innerHTML += priceModelMazda[`${сarModelMazda.value}`];
+  } else {
+    price.innerHTML += priceModelToyota[`${сarModelToyota.value}`];
+  }
+
+
+
+
+
+  // console.log(priceModelAudi[`${сarModelAudi.value}`]);
+  // price.innerHTML += priceModelAudi[`${сarModelAudi.value}`];
+
+
+
 
   for (const fuel of fuels) { // выводим выбранное топливо в div
     if (fuel.checked) {
@@ -161,6 +250,10 @@ function addPrice() {
 
   email.innerHTML += `Ваша почта: ${mail.value}<br/>`; //выводим майл пользователя
 
+
+
+
+
   const btnСlean = document.createElement('button');//создаем кнопку "очистить"
   btnСlean.textContent = "Очистить"
   сarPrice.appendChild(btnСlean);
@@ -174,6 +267,7 @@ function addPrice() {
     conditionAvtoOwner.textContent = "";
     paymentAvto.textContent = "";
     email.textContent = "";
+    price.textContent = "";
     btnPrice.disabled = false;
     btnСlean.style.display = "none";
   }
