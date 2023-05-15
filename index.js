@@ -127,9 +127,7 @@ const priceModelToyota = {
   'Toyota Corolla': 1800000
 };
 
-
-сarBrand.addEventListener('change', function () {//удаляем класс carList(display: none;) с выпадающего списка моделей выбранной марки авто
-
+function Car() {//удаляем класс carList(display: none;) с выпадающего списка моделей выбранной марки авто
   if (this.value == "Audi") {
     [...carLists].forEach(i => i.classList.add("carList"));
     сarModelAudi.classList.remove('carList');
@@ -158,8 +156,8 @@ const priceModelToyota = {
     [...carLists].forEach(i => i.classList.add("carList"));
     сarModelToyota.classList.remove('carList');
   }
-
-});
+};
+сarBrand.addEventListener('change', Car);
 
 function conditionOwners() { // удаляем класс carList (display: none;) c радиокнопок с кол-вом владельцев
   divCondition.classList.remove('carList');
@@ -173,6 +171,8 @@ function conditionOwnersClose() { // добавляем carList (display: none;)
 function addPrice() {
 
   btnPrice.disabled = true;//делаем кнопку не активной
+
+
 
   photo.innerHTML += `<img class="img-avto" src="img/avto.png" alt="авто на продажу">`;//выводим фото
 
@@ -191,7 +191,6 @@ function addPrice() {
   } else if (brandAvto.textContent == "Mazda") {
     nameAvto.innerHTML += `Модель: ${сarModelMazda.value}`;
   } else { nameAvto.innerHTML += `Модель: ${сarModelToyota.value}`; }
-
 
 
   let Fuel = 0;
@@ -256,11 +255,7 @@ function addPrice() {
 
 
 
-
-
-
-
-  if (brandAvto.textContent == "Audi") {//выводим сумму авто в div
+  if (brandAvto.textContent == "Audi") {//выводим общую сумму авто в div
     price.innerHTML += priceModelAudi[`${сarModelAudi.value}`] + (+Fuel) + (+Volume) + (+Сondition);
   } else if (brandAvto.textContent == "BMW") {
     price.innerHTML += priceModelBMW[`${сarModelBMW.value}`] + (+Fuel) + (+Volume) + (+Сondition);
@@ -285,6 +280,13 @@ function addPrice() {
 
   email.innerHTML += `Ваша почта: ${mail.value}<br/>`; //выводим майл пользователя
 
+  сarModelAudi.classList = "carList";
+  сarModelBMW.classList = "carList";
+  сarModelHyunda.classList = "carList";
+  сarModelHonda.classList = "carList";
+  сarModelJeep.classList = "carList";
+  сarModelMazda.classList = "carList";
+  сarModelToyota.classList = "carList";
 
   const btnСlean = document.createElement('button');//создаем кнопку "очистить"
   btnСlean.textContent = "Очистить"
