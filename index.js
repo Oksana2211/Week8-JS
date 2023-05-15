@@ -126,13 +126,6 @@ const priceModelToyota = {
   'Toyota Camry': 2000000,
   'Toyota Corolla': 1800000
 };
-const fuelA = {
-  'Бензин': +350000,
-  'Дизель': -150000,
-  'Газ': +450000,
-  'Электричество': +350000,
-}
-
 
 
 сarBrand.addEventListener('change', function () {//удаляем класс carList(display: none;) с выпадающего списка моделей выбранной марки авто
@@ -203,60 +196,84 @@ function addPrice() {
 
   let Fuel = 0;
 
-
   for (const fuel of fuels) { // выводим выбранное топливо в div
     if (fuel.checked) {
       fuelAvto.innerHTML += `Топливо: ${fuel.value}<br/>`;
-    }
-    if (fuel.value == 'Бензин') {
-      Fuel = `${fuelA['Бензин']}`;
-    }
-    if (fuel.value == 'Дизель') {
-      Fuel = `${fuelA['Дизель']}`;
-    }
-    if (fuel.value == 'Газ') {
-      Fuel = `${fuelA['Газ']}`;
-    }
-    if (fuel.value == 'Электричество') {
-      Fuel = `${fuelA['Электричество']}`;
+      if (fuel.value == 'Бензин') { //добавляем доплату за вид топлива
+        Fuel = '+350000';
+      }
+      if (fuel.value == 'Дизель') {
+        Fuel = '-100000';
+      }
+      if (fuel.value == 'Газ') {
+        Fuel = '+250000';
+      }
+      if (fuel.value == 'Электричество') {
+        Fuel = '+450000';
+      }
     }
   }
-
-
-
-
-  if (brandAvto.textContent == "Audi") {//выводим сумму авто в div
-    price.innerHTML += priceModelAudi[`${сarModelAudi.value}`] + (+Fuel);
-  } else if (brandAvto.textContent == "BMW") {
-    price.innerHTML += priceModelBMW[`${сarModelBMW.value}`] + (+Fuel);
-  } else if (brandAvto.textContent == "Hyundai") {
-    price.innerHTML += priceModelHyundai[`${сarModelHyunda.value}`] + (+Fuel);
-  } else if (brandAvto.textContent == "Honda") {
-    price.innerHTML += priceModelHonda[`${сarModelHonda.value}`] + (+Fuel);
-  } else if (brandAvto.textContent == "Jeep") {
-    price.innerHTML += priceModelJeep[`${сarModelJeep.value}`] + (+Fuel);
-  } else if (brandAvto.textContent == "Mazda") {
-    price.innerHTML += priceModelMazda[`${сarModelMazda.value}`] + (+Fuel);
-  } else {
-    price.innerHTML += priceModelToyota[`${сarModelToyota.value}`] + (+Fuel);
-  }
-
-
-
 
   volumeAvto.innerHTML += `Объем двигателя: ${volume.value} литра<br/>`; // выводим объем двигателя в div
+
+  let Volume = 0;
+  if (volume.value <= 1) { //расчитываем доплату за объем двигателя
+    Volume = "+100000";
+  }
+  if (volume.value > 1 && volume.value <= 2) {
+    Volume = "+200000"
+  }
+  if (volume.value > 2 && volume.value <= 3.5) {
+    Volume = "+300000"
+  }
+
+
+  let Сondition = 0;
 
   for (const condition of conditions) {
     if (condition.checked) {
       conditionAvto.innerHTML += `Состояние авто: ${condition.value}<br/>`;// выводим состояние авто в div
+      if (condition.value == 'Новый') { //расчитываем доплату за состояние авто
+        Сondition = '+500000';
+      }
     }
   }
+
 
   const conditions1 = document.querySelectorAll('input[name="condition1"]'); // радиокнопки кол-во владельцев
   for (const condition1 of conditions1) {
     if (condition1.checked) {
       conditionAvtoOwner.innerHTML += `${condition1.value}<br/>`;// выводим количество владельцев в div
+      if (condition1.value == '1-2 владельца') {
+        Сondition = '+300000';
+      }
+      if (condition1.value == '3 и более владельца') {
+        Сondition = '+100000';
+
+      }
     }
+  }
+
+
+
+
+
+
+
+  if (brandAvto.textContent == "Audi") {//выводим сумму авто в div
+    price.innerHTML += priceModelAudi[`${сarModelAudi.value}`] + (+Fuel) + (+Volume) + (+Сondition);
+  } else if (brandAvto.textContent == "BMW") {
+    price.innerHTML += priceModelBMW[`${сarModelBMW.value}`] + (+Fuel) + (+Volume) + (+Сondition);
+  } else if (brandAvto.textContent == "Hyundai") {
+    price.innerHTML += priceModelHyundai[`${сarModelHyunda.value}`] + (+Fuel) + (+Volume) + (+Сondition);
+  } else if (brandAvto.textContent == "Honda") {
+    price.innerHTML += priceModelHonda[`${сarModelHonda.value}`] + (+Fuel) + (+Volume) + (+Сondition);
+  } else if (brandAvto.textContent == "Jeep") {
+    price.innerHTML += priceModelJeep[`${сarModelJeep.value}`] + (+Fuel) + (+Volume) + (+Сondition);
+  } else if (brandAvto.textContent == "Mazda") {
+    price.innerHTML += priceModelMazda[`${сarModelMazda.value}`] + (+Fuel) + (+Volume) + (+Сondition);
+  } else {
+    price.innerHTML += priceModelToyota[`${сarModelToyota.value}`] + (+Fuel) + (+Volume) + (+Сondition);
   }
 
 
@@ -267,9 +284,6 @@ function addPrice() {
   }
 
   email.innerHTML += `Ваша почта: ${mail.value}<br/>`; //выводим майл пользователя
-
-
-
 
 
   const btnСlean = document.createElement('button');//создаем кнопку "очистить"
