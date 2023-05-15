@@ -192,39 +192,55 @@ function addPrice() {
     'Toyota Camry': 2000000,
     'Toyota Corolla': 1800000
   };
-
-  if (brandAvto.textContent == "Audi") {//выводим сумму авто в div
-    price.innerHTML += priceModelAudi[`${сarModelAudi.value}`];
-  } else if (brandAvto.textContent == "BMW") {
-    price.innerHTML += priceModelBMW[`${сarModelBMW.value}`];
-  } else if (brandAvto.textContent == "Hyundai") {
-    price.innerHTML += priceModelHyundai[`${сarModelHyunda.value}`];
-  } else if (brandAvto.textContent == "Honda") {
-    price.innerHTML += priceModelHonda[`${сarModelHonda.value}`];
-  } else if (brandAvto.textContent == "Jeep") {
-    price.innerHTML += priceModelJeep[`${сarModelJeep.value}`];
-  } else if (brandAvto.textContent == "Mazda") {
-    price.innerHTML += priceModelMazda[`${сarModelMazda.value}`];
-  } else {
-    price.innerHTML += priceModelToyota[`${сarModelToyota.value}`];
+  const fuelA = {
+    'Бензин': +350000,
+    'Дизель': -150000,
+    'Газ': +450000,
+    'Электричество': +350000,
   }
 
-
-
-
-
-  // console.log(priceModelAudi[`${сarModelAudi.value}`]);
-  // price.innerHTML += priceModelAudi[`${сarModelAudi.value}`];
-
-
+  let Fuel = 0;
 
 
   for (const fuel of fuels) { // выводим выбранное топливо в div
     if (fuel.checked) {
       fuelAvto.innerHTML += `Топливо: ${fuel.value}<br/>`;
-      break;
+    }
+    if (fuel.value == 'Бензин') {
+      Fuel = `${fuelA['Бензин']}`;
+    }
+    if (fuel.value == 'Дизель') {
+      Fuel = `${fuelA['Дизель']}`;
+    }
+    if (fuel.value == 'Газ') {
+      Fuel = `${fuelA['Газ']}`;
+    }
+    if (fuel.value == 'Электричество') {
+      Fuel = `${fuelA['Электричество']}`;
     }
   }
+
+
+
+
+  if (brandAvto.textContent == "Audi") {//выводим сумму авто в div
+    price.innerHTML += priceModelAudi[`${сarModelAudi.value}`] + (+Fuel);
+  } else if (brandAvto.textContent == "BMW") {
+    price.innerHTML += priceModelBMW[`${сarModelBMW.value}`] + (+Fuel);
+  } else if (brandAvto.textContent == "Hyundai") {
+    price.innerHTML += priceModelHyundai[`${сarModelHyunda.value}`] + (+Fuel);
+  } else if (brandAvto.textContent == "Honda") {
+    price.innerHTML += priceModelHonda[`${сarModelHonda.value}`] + (+Fuel);
+  } else if (brandAvto.textContent == "Jeep") {
+    price.innerHTML += priceModelJeep[`${сarModelJeep.value}`] + (+Fuel);
+  } else if (brandAvto.textContent == "Mazda") {
+    price.innerHTML += priceModelMazda[`${сarModelMazda.value}`] + (+Fuel);
+  } else {
+    price.innerHTML += priceModelToyota[`${сarModelToyota.value}`] + (+Fuel);
+  }
+
+
+
 
   volumeAvto.innerHTML += `Объем двигателя: ${volume.value} литра<br/>`; // выводим объем двигателя в div
 
