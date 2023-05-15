@@ -67,7 +67,71 @@ const payments = document.querySelectorAll('input[name="payment"]'); // ради
 
 const mail = document.querySelector('input[name="email"]'); // поле для ввода почты
 
-
+const priceModelAudi = {
+  'Audi 90': 1200000,
+  'Audi Coupе': 1500000,
+  'Audi Cabriolet': 1700000,
+  'Audi V8': 1800000,
+  'Audi A4': 1600000,
+  'Audi Q3': 1700000
+};
+const priceModelBMW = {
+  'BMW 4': 1200000,
+  'BMW 5': 1400000,
+  'BMW E34': 1500000,
+  'BMW F01': 1600000,
+  'BMW F10': 1700000,
+  'BMW G11': 1800000,
+  'BMW X2': 1900000,
+  'BMW Z': 2000000,
+  'BMW Z4': 2200000
+};
+const priceModelHyundai = {
+  'Hyundai Accent': 1200000,
+  'Hyundai Atos': 1300000,
+  'Hyundai Casper': 1400000,
+  'Hyundai Excel': 1500000,
+  'Hyundai Getz': 1600000,
+  'Hyundai Kona': 1700000,
+  'Hyundai Solaris': 1800000,
+  'Hyundai Tucson': 1700000
+};
+const priceModelHonda = {
+  'Honda Accord': 1200000,
+  'Honda Crosstour': 1300000,
+  'Honda Grace': 1400000,
+  'Honda Jazz': 1500000,
+  'Honda Legend': 1600000,
+  'Honda Logo': 1500000,
+  'Honda Pilot': 1600000,
+  'Honda Stream': 1700000
+};
+const priceModelJeep = {
+  'Jeep Grand Commander': 1800000,
+  'Jeep Commander (XK)': 1900000,
+  'Jeep Cherokee (KL)': 2000000,
+  'Jeep Liberty': 2200000
+};
+const priceModelMazda = {
+  'Mazda 2': 1500000,
+  'Mazda 3': 1600000,
+  'Mazda CX 5': 1700000,
+  'Mazda CX 50': 1800000
+};
+const priceModelToyota = {
+  'Toyota Tercel': 1500000,
+  'Toyota SAI': 1600000,
+  'Toyota Rush': 1700000,
+  'Toyota Probox': 1800000,
+  'Toyota Camry': 2000000,
+  'Toyota Corolla': 1800000
+};
+const fuelA = {
+  'Бензин': +350000,
+  'Дизель': -150000,
+  'Газ': +450000,
+  'Электричество': +350000,
+}
 
 
 
@@ -111,6 +175,8 @@ function conditionOwnersClose() { // добавляем carList (display: none;)
   divCondition.classList.add('carList');
 }
 
+
+
 function addPrice() {
 
   btnPrice.disabled = true;//делаем кнопку не активной
@@ -133,71 +199,7 @@ function addPrice() {
     nameAvto.innerHTML += `Модель: ${сarModelMazda.value}`;
   } else { nameAvto.innerHTML += `Модель: ${сarModelToyota.value}`; }
 
-  const priceModelAudi = {
-    'Audi 90': 1200000,
-    'Audi Coupе': 1500000,
-    'Audi Cabriolet': 1700000,
-    'Audi V8': 1800000,
-    'Audi A4': 1600000,
-    'Audi Q3': 1700000
-  };
-  const priceModelBMW = {
-    'BMW 4': 1200000,
-    'BMW 5': 1400000,
-    'BMW E34': 1500000,
-    'BMW F01': 1600000,
-    'BMW F10': 1700000,
-    'BMW G11': 1800000,
-    'BMW X2': 1900000,
-    'BMW Z': 2000000,
-    'BMW Z4': 2200000
-  };
-  const priceModelHyundai = {
-    'Hyundai Accent': 1200000,
-    'Hyundai Atos': 1300000,
-    'Hyundai Casper': 1400000,
-    'Hyundai Excel': 1500000,
-    'Hyundai Getz': 1600000,
-    'Hyundai Kona': 1700000,
-    'Hyundai Solaris': 1800000,
-    'Hyundai Tucson': 1700000
-  };
-  const priceModelHonda = {
-    'Honda Accord': 1200000,
-    'Honda Crosstour': 1300000,
-    'Honda Grace': 1400000,
-    'Honda Jazz': 1500000,
-    'Honda Legend': 1600000,
-    'Honda Logo': 1500000,
-    'Honda Pilot': 1600000,
-    'Honda Stream': 1700000
-  };
-  const priceModelJeep = {
-    'Jeep Grand Commander': 1800000,
-    'Jeep Commander (XK)': 1900000,
-    'Jeep Cherokee (KL)': 2000000,
-    'Jeep Liberty': 2200000
-  };
-  const priceModelMazda = {
-    'Mazda 2': 1500000,
-    'Mazda 3': 1600000,
-    'Mazda CX 5': 1700000,
-    'Mazda CX 50': 1800000
-  };
-  const priceModelToyota = {
-    'Toyota Tercel': 1500000,
-    'Toyota SAI': 1600000,
-    'Toyota Rush': 1700000,
-    'Toyota Probox': 1800000,
-    'Toyota Camry': 2000000,
-    'Toyota Corolla': 1800000
-  };
-  const fuelA = {
-    'Бензин': +350000,
-    'Дизель': -150000,
-    'Газ': +450000,
-    'Электричество': +350000,
-  }
+
 
   let Fuel = 0;
 
