@@ -1,10 +1,23 @@
 .root {
-  margin-left: 20%;
-  margin-right: 20%;
+  background-color: rgb(241, 255, 252);
+  padding-left: 20%;
+  padding-right: 20%;
   font-size: 1.7rem;
 }
+.h1 {
+  margin: 0;
+}
+.p {
+  margin-bottom: 0;
+}
 .formCar {
-  margin-top: 5%;
+  border: 1px solid rgba(7, 57, 69, 0.75);
+  border-radius: 3vw;
+display: grid;
+grid-template-columns: 1fr 1fr;
+justify-items: center;
+padding-top: 5%;
+padding-bottom: 5%;
 font-size: 1.5rem;;
 }
 #car {
@@ -12,11 +25,29 @@ display:grid;
 gap: 0.5vw;
 }
 .сar-price {
-  margin-top: 5%;
+  padding-top: 5%;
 }
 .img-avto{
   width: 15vw;
 }
 .carList {
   display: none;
+}
+.btn {
+  margin-top: 2%;
+  cursor: pointer;
+  background-color:rgb(79, 133, 146);
+  color: rgb(255, 255, 255);
+  border:none;
+  height: 3vw;
+  box-shadow: 7px 5px 9px -1px rgba(7, 65, 69, 0.75);
+-webkit-box-shadow: 7px 5px 9px -1px rgba(7, 57, 69, 0.75);
+-moz-box-shadow: 7px 5px 9px -1px rgba(7, 52, 69, 0.75);
+border-radius: 1vw;
+}
+.btn:disabled {
+background-color:rgb(182, 214, 221);
+color: #dffcf8;
+cursor:default;
+box-shadow: none;
 }

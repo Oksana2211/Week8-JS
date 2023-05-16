@@ -3,7 +3,6 @@ const btnPrice = document.querySelector('.btn');//кнопка "рассчить
 
 
 const photo = document.createElement('div');// контейнер для фото
-
 const brandAvto = document.createElement('h2'); //контейнер для марки авто
 const nameAvto = document.createElement('h2');// контейнер для модели авто
 const fuelAvto = document.createElement('span'); // контейнер для топлива
@@ -13,7 +12,6 @@ const conditionAvtoOwner = document.createElement('span'); // контейнер
 const paymentAvto = document.createElement('span');// контейнер для способа оплаты
 const email = document.createElement('span'); // контейнер для майла пользователя
 const price = document.createElement('span'); // контейнер для цены авто
-// console.log(conditionAvto);
 
 сarPrice.appendChild(photo); // добавляем контейнеры в div
 сarPrice.appendChild(brandAvto);
@@ -172,8 +170,6 @@ function addPrice() {
 
   btnPrice.disabled = true;//делаем кнопку не активной
 
-
-
   photo.innerHTML += `<img class="img-avto" src="img/avto.png" alt="авто на продажу">`;//выводим фото
 
   brandAvto.innerHTML += `${сarBrand.value}`;// выводим марку авто в div
@@ -288,9 +284,14 @@ function addPrice() {
   сarModelMazda.classList = "carList";
   сarModelToyota.classList = "carList";
 
+
+  const divBtn = document.createElement('div');//создаем контейнер для кнопки
+  сarPrice.appendChild(divBtn);
   const btnСlean = document.createElement('button');//создаем кнопку "очистить"
-  btnСlean.textContent = "Очистить"
-  сarPrice.appendChild(btnСlean);
+  btnСlean.textContent = "Очистить";
+  btnСlean.className = "btn";
+  divBtn.appendChild(btnСlean);
+
   function cleanPrice() {//при нажатии на кнопку очищаем поля в div
     photo.textContent = "";
     nameAvto.textContent = "";
