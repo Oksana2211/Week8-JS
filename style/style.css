@@ -51,3 +51,11 @@ color: #dffcf8;
 cursor:default;
 box-shadow: none;
 }
+.price {
+  color: rgb(230, 106, 75);
+  font-size: 1.9rem;
+}
+.text {
+  color: black;
+  font-size: 1.5rem;
+}

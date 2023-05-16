@@ -12,6 +12,9 @@ const conditionAvtoOwner = document.createElement('span'); // контейнер
 const paymentAvto = document.createElement('span');// контейнер для способа оплаты
 const email = document.createElement('span'); // контейнер для майла пользователя
 const price = document.createElement('span'); // контейнер для цены авто
+price.classList.add('price');
+
+
 
 сarPrice.appendChild(photo); // добавляем контейнеры в div
 сarPrice.appendChild(brandAvto);
@@ -51,6 +54,7 @@ divCondition.className = 'carList';
 divC.appendChild(divCondition);
 const pCondition = document.createElement('p');
 pCondition.textContent = "Количество владельцев:";
+// pCondition.className = 'p';
 const radio1 = document.createElement('span');
 radio1.innerHTML += `1-2 владельца <input type="radio" name="condition1" value="1-2 владельца"><br/>`;
 const radio2 = document.createElement('span');
@@ -58,6 +62,10 @@ radio2.innerHTML += `3 и более владельца <input type="radio" name
 divCondition.appendChild(pCondition);
 divCondition.appendChild(radio1);
 divCondition.appendChild(radio2);
+
+// const pConditionText = document.querySelector('.text');// 'Количество владельцев:'
+
+const p = document.querySelectorAll('.p'); // 'Выберите топливо:'  'Состояние автомобиля:'  'Выберите способ оплаты:'
 
 const conditions = document.querySelectorAll('input[name="condition"]'); // радиокнопки с состоянием авто
 
@@ -188,11 +196,11 @@ function addPrice() {
     nameAvto.innerHTML += `Модель: ${сarModelMazda.value}`;
   } else { nameAvto.innerHTML += `Модель: ${сarModelToyota.value}`; }
 
-
   let Fuel = 0;
 
   for (const fuel of fuels) { // выводим выбранное топливо в div
     if (fuel.checked) {
+      p[0].classList.add('text');
       fuelAvto.innerHTML += `Топливо: ${fuel.value}<br/>`;
       if (fuel.value == 'Бензин') { //добавляем доплату за вид топлива
         Fuel = '+350000';
@@ -206,31 +214,53 @@ function addPrice() {
       if (fuel.value == 'Электричество') {
         Fuel = '+450000';
       }
+    } else {
+      p[0].classList.add('price');
     }
   }
 
+
+
+
   volumeAvto.innerHTML += `Объем двигателя: ${volume.value} литра<br/>`; // выводим объем двигателя в div
+
+  if (volume.value == "") {
+    alert("Заполните все поля");
+    cleanPrice();
+  }
 
   let Volume = 0;
   if (volume.value <= 1) { //расчитываем доплату за объем двигателя
     Volume = "+100000";
   }
   if (volume.value > 1 && volume.value <= 2) {
-    Volume = "+200000"
+    Volume = "+200000";
   }
   if (volume.value > 2 && volume.value <= 3.5) {
-    Volume = "+300000"
+    Volume = "+300000";
   }
+  if (volume.value > 3.5) {
+    alert("Введите oбъем двигателя от 1.1 литра до 3.5 литров");
+    cleanPrice();
+  }
+  if (volume.value < 1.1) {
+    alert("Введите oбъем двигателя от 1.1 литра до 3.5 литров");
+    cleanPrice();
+  }
+
 
 
   let Сondition = 0;
 
   for (const condition of conditions) {
     if (condition.checked) {
+      p[1].classList.add('text');
       conditionAvto.innerHTML += `Состояние авто: ${condition.value}<br/>`;// выводим состояние авто в div
       if (condition.value == 'Новый') { //расчитываем доплату за состояние авто
         Сondition = '+500000';
       }
+    } else {
+      p[1].classList.add('price');
     }
   }
 
@@ -246,11 +276,14 @@ function addPrice() {
         Сondition = '+100000';
 
       }
+    } else {
+      radio1.classList.add('price');
+      radio2.classList.add('price');
     }
   }
+  // console.log(pConditionText);
 
-
-
+  price.textContent = "Цена: ";
   if (brandAvto.textContent == "Audi") {//выводим общую сумму авто в div
     price.innerHTML += priceModelAudi[`${сarModelAudi.value}`] + (+Fuel) + (+Volume) + (+Сondition);
   } else if (brandAvto.textContent == "BMW") {
@@ -270,11 +303,26 @@ function addPrice() {
 
   for (const payment of payments) {
     if (payment.checked) {
+      p[2].classList.add('text');
       paymentAvto.innerHTML += `Способ оплаты: ${payment.value}<br/>`;// выводим способ оплаты в div
+    } else {
+      p[2].classList.add('price');
     }
   }
 
-  email.innerHTML += `Ваша почта: ${mail.value}<br/>`; //выводим майл пользователя
+
+  let pattern = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
+  if (mail.value.match(pattern)) {
+    email.innerHTML += `Ваша почта: ${mail.value}<br/>`; //выводим майл пользователя
+  } else if (mail.value == "" || mail.value == " ") {
+    alert("Заполните все поля");
+    cleanPrice();
+  } else {
+    alert("Заполните mail корректно");
+    cleanPrice();
+  }
+
 
   сarModelAudi.classList = "carList";
   сarModelBMW.classList = "carList";
@@ -288,11 +336,17 @@ function addPrice() {
   const divBtn = document.createElement('div');//создаем контейнер для кнопки
   сarPrice.appendChild(divBtn);
   const btnСlean = document.createElement('button');//создаем кнопку "очистить"
-  btnСlean.textContent = "Очистить";
+  btnСlean.textContent = "Рассчитать заново";
   btnСlean.className = "btn";
   divBtn.appendChild(btnСlean);
 
   function cleanPrice() {//при нажатии на кнопку очищаем поля в div
+    // pConditionText.classList.add('text');
+    p[0].classList.remove('price');
+    p[1].classList.remove('price');
+    p[2].classList.remove('price');
+    radio1.classList.remove('price');
+    radio2.classList.remove('price');
     photo.textContent = "";
     nameAvto.textContent = "";
     brandAvto.textContent = "";
