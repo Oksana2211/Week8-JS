@@ -15,7 +15,6 @@ const price = document.createElement('span'); // контейнер для це�
 price.classList.add('price');
 
 
-
 сarPrice.appendChild(photo); // добавляем контейнеры в div
 сarPrice.appendChild(brandAvto);
 сarPrice.appendChild(nameAvto);
@@ -54,7 +53,6 @@ divCondition.className = 'carList';
 divC.appendChild(divCondition);
 const pCondition = document.createElement('p');
 pCondition.textContent = "Количество владельцев:";
-// pCondition.className = 'p';
 const radio1 = document.createElement('span');
 radio1.innerHTML += `1-2 владельца <input type="radio" name="condition1" value="1-2 владельца"><br/>`;
 const radio2 = document.createElement('span');
@@ -63,7 +61,6 @@ divCondition.appendChild(pCondition);
 divCondition.appendChild(radio1);
 divCondition.appendChild(radio2);
 
-// const pConditionText = document.querySelector('.text');// 'Количество владельцев:'
 
 const p = document.querySelectorAll('.p'); // 'Выберите топливо:'  'Состояние автомобиля:'  'Выберите способ оплаты:'
 
@@ -173,7 +170,6 @@ function conditionOwnersClose() { // добавляем carList (display: none;)
 }
 
 
-
 function addPrice() {
 
   btnPrice.disabled = true;//делаем кнопку не активной
@@ -220,8 +216,6 @@ function addPrice() {
   }
 
 
-
-
   volumeAvto.innerHTML += `Объем двигателя: ${volume.value} литра<br/>`; // выводим объем двигателя в div
 
   if (volume.value == "") {
@@ -247,7 +241,6 @@ function addPrice() {
     alert("Введите oбъем двигателя от 1.1 литра до 3.5 литров");
     cleanPrice();
   }
-
 
 
   let Сondition = 0;
@@ -283,7 +276,7 @@ function addPrice() {
       radio2.classList.add('price');
     }
   }
-  // console.log(pConditionText);
+
 
   price.textContent = "Цена: ";
   if (brandAvto.textContent == "Audi") {//выводим общую сумму авто в div
@@ -336,10 +329,10 @@ function addPrice() {
 
 
   const divBtn = document.createElement('div');//создаем контейнер для кнопки
-  сarPrice.appendChild(divBtn);
   const btnСlean = document.createElement('button');//создаем кнопку "очистить"
   btnСlean.textContent = "Рассчитать заново";
   btnСlean.className = "btn";
+  сarPrice.appendChild(divBtn);
   divBtn.appendChild(btnСlean);
 
   function cleanPrice() {//при нажатии на кнопку очищаем поля в div

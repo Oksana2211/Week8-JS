@@ -59,3 +59,8 @@ box-shadow: none;
   color: black;
   font-size: 1.5rem;
 }
+.text2 {
+  color: rgba(252, 55, 5, 0.788);
+  font-size: 1.4rem;
+  max-width: 19vw;
+}
