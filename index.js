@@ -28,7 +28,7 @@ price.classList.add('price');
 сarPrice.appendChild(price);
 
 
-
+const form = document.querySelector('#car');
 const сarBrand = document.querySelector('#car').elements['сarBrand']; //марки авто
 
 const carLists = document.querySelectorAll('.carList');//весь список с моделями авто
@@ -268,6 +268,8 @@ function addPrice() {
   const conditions1 = document.querySelectorAll('input[name="condition1"]'); // радиокнопки кол-во владельцев
   for (const condition1 of conditions1) {
     if (condition1.checked) {
+      radio1.classList.add('text');
+      radio2.classList.add('text');
       conditionAvtoOwner.innerHTML += `${condition1.value}<br/>`;// выводим количество владельцев в div
       if (condition1.value == '1-2 владельца') {
         Сondition = '+300000';
@@ -363,6 +365,6 @@ function addPrice() {
   btnСlean.addEventListener('click', cleanPrice);
 
 
-  document.querySelector('#car').reset();
+  form.reset();
 }
 btnPrice.addEventListener('click', addPrice);
