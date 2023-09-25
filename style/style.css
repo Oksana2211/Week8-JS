@@ -4,61 +4,74 @@
   padding-right: 20%;
   font-size: 1.7rem;
 }
+
 .h1 {
   margin: 0;
 }
+
 .p {
   margin-bottom: 0;
 }
+
 .formCar {
   border: 1px solid rgba(7, 57, 69, 0.75);
   border-radius: 3vw;
-display: grid;
-grid-template-columns: 1fr 1fr;
-justify-items: center;
-padding-top: 5%;
-padding-bottom: 5%;
-font-size: 1.5rem;;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-size: 1.5rem;
+  ;
 }
+
 #car {
-display:grid;
-gap: 0.5vw;
+  display: grid;
+  gap: 0.5vw;
 }
+
 .сar-price {
   padding-top: 5%;
 }
-.img-avto{
+
+.img-avto {
   width: 15vw;
 }
+
 .carList {
   display: none;
 }
+
 .btn {
   margin-top: 2%;
   cursor: pointer;
-  background-color:rgb(79, 133, 146);
+  background-color: rgb(68, 131, 147);
   color: rgb(255, 255, 255);
-  border:none;
+  border: none;
   height: 3vw;
   box-shadow: 7px 5px 9px -1px rgba(7, 65, 69, 0.75);
--webkit-box-shadow: 7px 5px 9px -1px rgba(7, 57, 69, 0.75);
--moz-box-shadow: 7px 5px 9px -1px rgba(7, 52, 69, 0.75);
-border-radius: 1vw;
+  -webkit-box-shadow: 7px 5px 9px -1px rgba(7, 57, 69, 0.75);
+  -moz-box-shadow: 7px 5px 9px -1px rgba(7, 52, 69, 0.75);
+  border-radius: 1vw;
 }
+
 .btn:disabled {
-background-color:rgb(182, 214, 221);
-color: #dffcf8;
-cursor:default;
-box-shadow: none;
+  background-color: rgb(182, 214, 221);
+  color: #dffcf8;
+  cursor: default;
+  box-shadow: none;
 }
+
 .price {
   color: rgb(230, 106, 75);
   font-size: 1.9rem;
 }
+
 .text {
   color: black;
   font-size: 1.5rem;
 }
+
 .text2 {
   color: rgba(252, 55, 5, 0.788);
   font-size: 1.4rem;
